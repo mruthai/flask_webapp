@@ -1,0 +1,12 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+    <h3>Welcome to Wild App</h3>
+    {% for web in cdn.welcome_to_wild_app%}
+        <span>{{ web }} </span>
+    {% endfor %}
+    <h3> Meet our Team</h3>
+    {% for team in cdn.meet_our_team%}
+        <p>{{ team }}  </p>
+    {% endfor %}
+{% endblock %}
