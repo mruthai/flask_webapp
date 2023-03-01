@@ -7,10 +7,16 @@
     <p>
         {{ login.email.label }}<br/>
         {{ login.email(size=32) }}
+        {% for error in login.email.errors %}
+        <span> {{ error }} </span>
+        {% endfor %}
     </p>
     <p>
         {{ login.password.label }}<br/>
         {{ login.password(size=32) }}
+        {% for error in login.password.errors %}
+        <span> {{ error }} </span>
+        {% endfor %}
     </p>
     <p>
         {{ login.remember.label }}<br/>
