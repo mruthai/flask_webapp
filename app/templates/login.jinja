@@ -1,5 +1,24 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-    <h2> Login </h2>
+    <h2>Login</h2>
+    <form action="" method="POST">
+    {{ login.hidden_tag() }}
+    <p>
+        {{ login.email.label }}<br/>
+        {{ login.email(size=32) }}
+    </p>
+    <p>
+        {{ login.password.label }}<br/>
+        {{ login.password(size=32) }}
+    </p>
+    <p>
+        {{ login.remember.label }}<br/>
+        {{ login.remember(size=10) }}
+    </p>
+    <p> 
+        {{ login.submit(class='btn btn-primary') }}
+    </p>
+    </form>
 {% endblock %}
+

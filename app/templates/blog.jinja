@@ -1,6 +1,18 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-    <h2> Blog </h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sed excepturi itaque fugiat dignissimos? Repellat illum iusto quas odit fuga!</p>
+    <h2>Blog</h2>
+    <form action="" method="POST">
+    {{ blog.hidden_tag() }}
+    <p>
+        {{ blog.title.label }} <br/>
+        {{ blog.title(size=82)}}
+    </p>
+    <p>
+        {{ blog.body.label}}<br/>
+        {{ blog.body(style='height: 400px; width: 800px') }}
+    <p> 
+        {{ blog.submit(class='btn btn-primary') }}
+    </p>
+    </form>
 {% endblock %}

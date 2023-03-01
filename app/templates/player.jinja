@@ -1,0 +1,33 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+    <h2>Player</h2>
+    <form action="" method="POST">
+        {{ player.hidden_tag() }}
+        <p>
+        {{ player.first_name.label}}
+        {{ player.first_name(size=32)}}
+        </p>
+        <p>
+        {{ player.last_name.label}}
+        {{ player.last_name(size=32)}}
+        </p>
+        <p>
+        {{ player.team.label}}
+        {{ player.team(size=32)}}
+        </p>
+        <p>
+        {{ player.position.label}}
+        {{ player.position(size=32)}}
+        </p>
+        <p>
+        {{ player.age.label}}
+        {{ player.age(size=32)}}
+        </p>
+        <p>
+        {{ player.nationality.label}}
+        {{ player.nationality(size=32)}}
+        </p>
+        <p> {{ player.submit(class='btn btn-primary') }}</p>
+    </form>
+{% endblock %}

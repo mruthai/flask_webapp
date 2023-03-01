@@ -1,12 +1,12 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-    <h3>Welcome to Wild App</h3>
-    {% for web in cdn.welcome_to_wild_app%}
-        <span>{{ web }} </span>
+    <h3>Welcome to World Soccer Fantasy</h3>
+    {% for soccer_fantasy in cdn['soccer_fantasy']%}
+        <span>{{ soccer_fantasy }} </span>
     {% endfor %}
-    <h3> Meet our Team</h3>
-    {% for team in cdn.meet_our_team%}
-        <p>{{ team }}  </p>
+    <h3> Players</h3>
+    {% for top_player in cdn['top_player']%}
+        <p>{{ top_player }} </p>
     {% endfor %}
 {% endblock %}

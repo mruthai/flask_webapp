@@ -5,6 +5,14 @@
     <form action="" method="POST">
         {{ form.hidden_tag() }}
         <p>
+        {{ form.first_name.label}}
+        {{ form.first_name(size=32)}}
+        </p>
+        <p>
+        {{ form.last_name.label}}
+        {{ form.last_name(size=32)}}
+        </p>
+        <p>
         {{ form.username.label}}
         {{ form.username(size=32)}}
         </p>
