@@ -2,29 +2,27 @@
 
 {% block content %}
     <h2>Login</h2>
-    <form action="" method="POST">
-    {{ login.hidden_tag() }}
-    <p>
-        {{ login.email.label }}<br/>
-        {{ login.email(size=32) }}
-        {% for error in login.email.errors %}
-        <span> {{ error }} </span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ login.password.label }}<br/>
-        {{ login.password(size=32) }}
-        {% for error in login.password.errors %}
-        <span> {{ error }} </span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ login.remember.label }}<br/>
-        {{ login.remember(size=10) }}
-    </p>
-    <p> 
-        {{ login.submit(class='btn btn-primary') }}
-    </p>
-    </form>
+    <main>
+        <div class="login-row">
+            <form action="" method="POST">
+            {{ login.hidden_tag() }}
+            <p>
+                {{ login.email.label }}<br/>
+                {{ login.email(size=32) }}
+            </p>
+            <p>
+                {{ login.password.label }}<br/>
+                {{ login.password(size=32) }}
+            </p>
+            <p>
+                {{ login.remember.label }}<br/>
+                {{ login.remember(size=10) }}
+            </p>
+            <p> 
+                {{ login.submit(class='btn btn-primary') }}
+            </p>
+            </form>
+        </div>
+    </main>
 {% endblock %}
 

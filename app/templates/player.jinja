@@ -13,8 +13,8 @@
         {{ player.last_name(size=32)}}
         </p>
         <p>
-        {{ player.team.label}} <br>
-        {{ player.team(size=32)}}
+        {{ player.team_name.label}} <br>
+        {{ player.team_name(size=32)}}
         </p>
         <p>
         {{ player.position.label}} <br>
@@ -27,9 +27,14 @@
         <p>
         {{ player.nationality.label}} <br>
         {{ player.nationality(size=32)}}
-        {% for error in player.nationality.errors %}
-        <span> {{ error }} </span>
-        {% endfor %}
+        </p>
+        <p>
+        {{ player.price.label}} <br>
+        {{ player.price(size=32)}}
+        </p>
+        <p>
+        {{ player.date_created.label}} <br>
+        {{ player.date_created(size=32)}}
         </p>
         <p> {{ player.submit(class='btn btn-primary') }}</p>
     </form>

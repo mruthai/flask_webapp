@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, IntegerField, DateField
 from wtforms.validators import DataRequired, EqualTo
 
 class RegisterForm(FlaskForm):
@@ -20,10 +20,12 @@ class LoginForm(FlaskForm):
 class PlayerForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
-    team = StringField('Team', validators=[DataRequired()])
+    team_name = StringField('Team', validators=[DataRequired()])
     position = StringField('Position', validators=[DataRequired()])
     age = StringField('Age', validators=[DataRequired()])
     nationality = StringField('Nationality', validators=[DataRequired()])
+    price = IntegerField('Price', validators=[DataRequired()])
+    date_created = DateField('Date Created', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class BlogForm(FlaskForm):
