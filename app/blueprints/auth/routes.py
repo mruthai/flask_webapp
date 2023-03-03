@@ -1,8 +1,8 @@
 from . import bp as auth_bp
 from app.forms import RegisterForm, LoginForm
 from app.blueprints.social.models import User
-from flask import render_template, flash, redirect
-from flask_login import login_user, logout_user, login_required
+from flask import render_template, flash, redirect, url_for
+from flask_login import login_user, logout_user, login_required, current_user
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -13,11 +13,11 @@ def login():
         user_match = User.query.filter_by(username=username).first()
         if not user_match or not user_match.check_password(password):
             flash(f'Username or Password was incorrect', 'try again')
-            return redirect('/login')
+            return redirect(url_for('auth.login'))
         
         flash (f'{username}, successful login')
         login_user(user_match, remember=form.remember_me.data)
-        return redirect('/')
+        return redirect(url_for('social.user', username=current_user.username))
     return render_template('login.jinja', login=form, title='Login')
 
 @auth_bp.route('/logout')
@@ -39,11 +39,12 @@ def register():
         email_match = User.query.filter_by(email=email).first()
         if user_match or email_match:
             flash (f'User {username} already exists!', 'try again')
-            return redirect('/register')
+            return redirect(url_for('auth.register'))
         elif email_match:
             flash (f'Request to register {username}!', 'successful')
-            return redirect('/register')
+            return redirect(url_for('main.index'))
         else:
             u.hash_password(password)
             u.commit()
+        return redirect(url_for('main.index'))
     return render_template('register.jinja', form=form, title='Register')
