@@ -1,22 +1,23 @@
 from datetime import datetime
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(120), nullable=True)
     user_posts = db.relationship('Post', backref='author', lazy='dynamic')
-    player_post = db.relationship('Player', backref='player_post', lazy='dynamic')
+    player_post = db.relationship('Player', backref='player_author', lazy='dynamic')
 
     def __repr__(self):
         if self.email:
-            return f'user: {self.username}'
+            return f'<User: {self.username}>'
         return f'User: {self.username}'
     
     def __str__(self):
@@ -47,7 +48,7 @@ class Player(db.Model):
     def commit(self):
         db.session.add(self)
         db.session.commit()
-        
+
     def __repr__(self):
         return f'Player: {self.first_name} {self.last_name} {self.team_name} {self.position} {self.age} {self.nationality} {self.price} {self.date_created}'
 
@@ -59,7 +60,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return f'Post: {self.title} {self.body}'
+        return f'<Post: {self.title} {self.body}>'
 
     def commit(self):
         db.session.add(self)

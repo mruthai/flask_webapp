@@ -7,16 +7,16 @@
             <form action="" method="POST">
             {{ login.hidden_tag() }}
             <p>
-                {{ login.email.label }}<br/>
-                {{ login.email(size=32) }}
+                {{ login.username.label }}<br/>
+                {{ login.username(size=32) }}
             </p>
             <p>
                 {{ login.password.label }}<br/>
                 {{ login.password(size=32) }}
             </p>
             <p>
-                {{ login.remember.label }}<br/>
-                {{ login.remember(size=10) }}
+                {{ login.remember_me.label }}<br/>
+                {{ login.remember_me(size=10) }}
             </p>
             <p> 
                 {{ login.submit(class='btn btn-primary') }}
