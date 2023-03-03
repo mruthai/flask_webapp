@@ -1,7 +1,7 @@
 from . import bp as social_bp
 from app.blueprints.social.models import User, Player, Post
 from app.forms import BlogForm, PlayerForm
-from flask import render_template, redirect, flash
+from flask import render_template, redirect, flash, url_for
 from flask_login import login_required, current_user
 
 @social_bp.route('/user/<username>')
@@ -24,7 +24,7 @@ def blog():
         b = Post(title=title, body=body, user_id=current_user.id)
         b.commit()
         flash (f'Post successful: {title} {body}')
-        return redirect('/')
+        return redirect(url_for('social.user', username=current_user.username))
     return render_template('blog.jinja', blog=form, title='Blog')
 
 @social_bp.route('/player', methods=['GET', 'POST'])
@@ -42,7 +42,7 @@ def player():
         date_created = form.date_created.data
         p = Player(first_name=first_name, last_name=last_name, team_name=team_name, position=position, age=age, nationality=nationality, date_created=date_created, price=price, user_id=current_user.id)
         p.commit()
-        flash (f'Player added {first_name} {last_name} {team_name} {position}!', 'successfully')
-        return redirect('/')
+        flash (f'Player added: {first_name} * {last_name} * {team_name} *{position} * {age} * {nationality}')
+        return redirect(url_for('social.user', username=current_user.username))
     return render_template('player.jinja', player=form, title='Player')
 

@@ -8,3 +8,8 @@ body {
     background-position: fill;
 }
 
+ul {
+    list-style-type: none;
+    color: lime;
+}
+
